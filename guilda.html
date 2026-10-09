@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrar na Guilda — Andrômeda</title>
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=EB+Garamond:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/formulario.css">
+</head>
+<body>
+    <header>
+        <h1 class="titulo"> ANDRÔMEDA </h1>
+        <nav aria-label="Navegação principal">
+            <a href="index.html#sobre">SOBRE</a>
+            <a href="index.html#atributos">ATRIBUTOS</a>
+            <a href="index.html#inventario">INVENTÁRIO</a>
+            <a href="index.html#galeria">GALERIA</a>
+            <a href="index.html#contato">CONTATO</a>
+        </nav>
+    </header>
+    <main>
+        <section class="pagina-formulario">
+            <h2 class="titulo-secao">✥ ENTRAR NA GUILDA ✥</h2>
+            <form action="">
+                <header class="formulario-introducao">
+                     <p class="eyebrow">RECRUTAMENTO DA GUILDA</p>
+                     <h3>Junte-se à Guilda</h3>
+                    <p>
+                        Aventureiros dispostos a enfrentar o desconhecido
+                        podem enviar seus dados para solicitar entrada
+                        na Guilda.
+                    </p>
+                </header>
+                <div class="campo">
+                    <label for="nome"> Nome do aventureiro</label>
+                    <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+                </div>
+                <div class="campo">
+                     <label for="email">E-mail</label>
+                     <input type="email" id="email" name="email" placeholder="Digite seu email aqui" required >
+                </div>
+                <div class="campo">
+                    <label for="classe">Classe</label>
+                    <select id="classe" name="classe"required>
+                         <option value="" disabled selected>Selecione sua classe</option>
+                         <option value="guerreiro">Guerreiro</option>
+                         <option value="mago">Mago</option>
+                         <option value="feiticeiro">Feiticeiro</option>
+                         <option value="arqueiro">Arqueiro</option>
+                         <option value="ladino">Ladino</option>
+                         <option value="clerigo">Clérigo</option>
+                         <option value="outra">Outra</option>
+                    </select>
+                </div>
+                <div class="campo">
+                    <label for="nivel">Nível</label>
+                    <input type="number" id="nivel" name="nivel" min="1" placeholder="Digite seu nível" required>
+                </div>
+                <div class="campo">
+                     <label for="especialidade">Especialidade</label>
+                     <input type="text"  id="especialidade" name="especialidade" placeholder="Ex.: magia, combate, cura..." required >
+                </div>
+                <div class="campo">
+                     <label for="motivo">Por que deseja entrar na Guilda? </label>
+                     <textarea id="motivo" name="motivo" rows="7" placeholder="Conte um pouco sobre sua motivação..." required ></textarea>
+                </div>
+                <footer class="botoes-formulario">
+                    <button type="submit" class="botao-formulario">⚔ ENVIAR SOLICITAÇÃO</button>
+                    <a href="index.html#contato" class="botao-voltar">VOLTAR</a>
+                </footer>
+            </form>
+        </section>
+    </main>
+    <footer>
+         <p>© 2026 Andrômeda — Herdeira das Sombras</p>
+         <p>Ficha de personagem RPG • Protótipo Parte 1</p>
+    </footer>
+</body>
+</html>

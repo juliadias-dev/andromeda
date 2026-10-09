@@ -1,0 +1,2048 @@
+
+/* =========================
+   VARIÁVEIS DE IDENTIDADE
+   ========================= */
+/* Define variáveis reutilizáveis de cores, largura máxima e duração das animações. */
+:root {
+    --preto: #030207;
+    --preto-card: #0f0a14;
+    --preto-header: #08060b;
+
+    --roxo: #8d4dcc;
+    --roxo-escuro: #090313;
+    --roxo-claro: #b66cff;
+
+    --dourado: #d4af37;
+    --dourado-escuro: #80652a;
+
+    --branco: #ffffff;
+    --cinza: #aaa4b0;
+    --cinza-claro: #bdb8c2;
+    --barra-vazia: #352d3d;
+
+    --largura: 1200px;
+    --transicao: 0.25s ease;
+}
+
+
+/* =========================RESET BÁSICO========================= */
+* {
+    box-sizing: border-box;
+}
+
+/* Configura a rolagem suave e o espaço superior ao navegar para âncoras. */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+/* Define o fundo geral, as cores do texto e a fonte padrão da página. */
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    color: var(--branco);
+    background-color: var(--preto);
+
+    background-image:
+        radial-gradient(
+            ellipse at 15% 20%,
+            rgba(105, 35, 180, 0.55) 0%,
+            rgba(70, 20, 120, 0.35) 20%,
+            transparent 45%
+        ),
+        radial-gradient(
+            ellipse at 85% 75%,
+            rgba(115, 40, 190, 0.50) 0%,
+            rgba(75, 20, 130, 0.30) 25%,
+            transparent 50%
+        ),
+        radial-gradient(
+            ellipse at 50% 50%,
+            rgba(65, 20, 100, 0.25) 0%,
+            transparent 55%
+        ),
+        linear-gradient(
+            120deg,
+            #020107,
+            #090313,
+            #030207
+        );
+
+    background-attachment: fixed;
+
+    font-family: "EB Garamond", Georgia, serif;
+}
+
+/* Impede que imagens ultrapassem a largura do elemento que as contém. */
+img {
+    max-width: 100%;
+}
+
+/* Mantém os links com a cor do texto ao redor, salvo quando outra regra muda isso. */
+a {
+    color: inherit;
+}
+
+
+/* =========================CABEÇALHO ========================= */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    min-height: 72px;
+    padding: 0 5%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+
+    background: rgba(8, 6, 11, 0.96);
+    border-bottom: 2px solid var(--dourado-escuro);
+    backdrop-filter: blur(10px);
+}
+
+/* Estiliza o nome/logo do site no cabeçalho. */
+.titulo {
+    color: var(--branco);
+    text-decoration: none;
+
+    font-family: "Cinzel", Georgia, serif;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 2px;
+
+    transition: color var(--transicao);
+}
+
+.titulo:hover,
+/* Define o destaque visível quando este elemento recebe foco pelo teclado. */
+.titulo:focus-visible {
+    color: var(--dourado);
+}
+
+
+/* =========================MENU========================= */
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+/* Define aparência, espaçamento e animação dos links do menu. */
+nav a {
+    padding: 8px 2px;
+
+    color: var(--branco);
+    text-decoration: none;
+
+    font-family: "Courier New", monospace;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    transition:
+        color var(--transicao),
+        transform var(--transicao);
+}
+
+nav a:hover,
+/* Define o destaque visível quando este elemento recebe foco pelo teclado. */
+nav a:focus-visible {
+    color: var(--dourado);
+    transform: translateY(-2px);
+}
+
+
+/* =========================ACESSIBILIDADE========================= */
+a:focus-visible {
+    outline: 2px solid var(--dourado);
+    outline-offset: 4px;
+}
+
+
+/* =========================ESTRUTURA GERAL========================= */
+main {
+    overflow: hidden;
+}
+
+/* Controla o espaçamento e a largura das seções principais. */
+.secao {
+    width: min(90%, var(--largura));
+    margin: 100px auto;
+}
+
+/* Estiliza pequenos textos de categoria que aparecem acima de títulos. */
+.eyebrow {
+    margin: 0 0 12px;
+
+    color: var(--dourado);
+
+    font-family: "Courier New", monospace;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+
+
+/* =========================TÍTULOS DAS SEÇÕES========================= */
+.titulo-secao {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    margin-bottom: 40px;
+}
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+.titulo-secao span {
+    flex: 1;
+    height: 1px;
+    background: var(--dourado-escuro);
+}
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+.titulo-secao h2 {
+    margin: 0;
+
+    color: var(--dourado);
+
+    font-family: "Cinzel", Georgia, serif;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================SOBRE O HERÓI========================================= */
+
+/* =========================================
+    PAINEL PRINCIPAL
+   ========================================= */
+
+/* Distribui as partes da seção Sobre o Herói em colunas usando CSS Grid. */
+.sobre-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.7fr 1fr;
+    gap: 28px;
+    align-items: start;
+}
+
+
+/* =========================================
+   PAINEL DA PERSONAGEM
+   ========================================= */
+
+/* Estiliza o painel que contém a imagem e informações visuais do personagem. */
+.painel-personagem {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin:20px;
+    margin-bottom:0;
+}
+
+/* Define a área reservada à imagem principal do herói. */
+.imagem-heroi {
+    margin: 0;
+    height: 420px;/*tamanho da imagem*/
+    border: 1px solid var(--dourado);
+    border-radius: 8px;
+    overflow: hidden;
+    background: rgba(10, 5, 18, 0.8);
+    box-shadow:
+        0 0 20px rgba(141, 77, 204, 0.2),
+        inset 0 0 30px rgba(141, 77, 204, 0.08);
+}
+
+/* Controla tamanho e enquadramento da imagem principal. */
+.imagem-heroi img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+/* Define o efeito visual que aparece quando o cursor passa sobre este elemento. */
+.imagem-heroi:hover img {
+    transform: scale(1.05);
+}
+
+
+/* =========================================
+   NÍVEL DE PODER
+   ========================================= */
+
+/* Estiliza o cartão que mostra o nível de poder do personagem. */
+.nivel-poder {
+    padding: 18px;
+    text-align: center;
+    border: 1px solid var(--dourado);
+    border-radius: 8px;
+    background: linear-gradient(
+        145deg,
+        rgba(35, 17, 60, 0.95),
+        rgba(10, 5, 20, 0.95)
+    );
+}
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+.nivel-poder h3 {
+    margin: 0 0 8px;
+    color: var(--branco);
+    font-family: "Cinzel", Georgia, serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+.nivel-poder strong {
+    color: var(--dourado);
+    font-family: "Cinzel", Georgia, serif;
+    font-size: 38px;
+}
+
+
+/* =========================================
+   CONTEÚDO CENTRAL
+   ========================================= */
+
+/* Organiza o texto biográfico e os títulos sobre o personagem. */
+.sobre-heroi {
+    padding: 20px 10px;
+}
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+.sobre-heroi .subtitulo {
+    margin: 0 0 8px;
+    color: var(--dourado);
+    font-family: "Cinzel", Georgia, serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+.sobre-heroi h1 {
+    margin: 0;
+    color: var(--dourado);
+    font-family: "Cinzel", Georgia, serif;
+    font-size: clamp(42px, 5vw, 68px);
+    line-height: 1;
+}
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+.sobre-heroi h2 {
+    margin: 12px 0 25px;
+    color: var(--branco);
+    font-family: "Cinzel", Georgia, serif;
+    font-size: 20px;
+    letter-spacing: 5px;
+}
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+.sobre-heroi hr {
+    border: 0;
+    border-top: 1px solid rgba(212, 175, 55, 0.6);
+    margin: 20px 0 25px;
+}
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+.sobre-heroi p {
+    color: var(--branco);
+    font-family: "EB Garamond", Georgia, serif;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+.sobre-heroi .frase {
+    color: var(--branco);
+    font-style: italic;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+
+/* =========================================
+   FICHA DA HEROÍNA
+   ========================================= */
+
+/* Estiliza a ficha com os dados básicos do herói. */
+.ficha-heroi {
+    padding: 28px 25px;
+    border: 1px solid rgba(212, 175, 55, 0.45);
+    border-radius: 8px;
+    background: rgba(20, 10, 30, 0.55);
+    margin:20px;
+}
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+.ficha-heroi h2 {
+    margin: 0 0 30px;
+    color: var(--dourado);
+    font-family: "Cinzel", Georgia, serif;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+.ficha-heroi dl {
+    margin: 0;
+}
+
+/* Organiza cada par de informação da ficha (termo e valor). */
+.ficha-heroi dl > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+/* Estiliza o termo/etiqueta de um dado na ficha do personagem. */
+.ficha-heroi dt {
+    color: var(--cinza);
+    font-family: "Cinzel", Georgia, serif;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+}
+
+/* Estiliza o valor correspondente ao termo na ficha do personagem. */
+.ficha-heroi dd {
+    margin: 0;
+    color: var(--branco);
+    font-family: "EB Garamond", Georgia, serif;
+    font-size: 15px;
+    text-align: right;
+}
+
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+/* Ajustes responsivos para telas médias, como tablets e notebooks menores. */
+@media (max-width: 1024px) {
+
+/* Distribui as partes da seção Sobre o Herói em colunas usando CSS Grid. */
+    .sobre-grid {
+        grid-template-columns: 1fr 1.5fr;
+    }
+
+/* Estiliza a ficha com os dados básicos do herói. */
+    .ficha-heroi {
+        grid-column: 1 / -1;
+    }
+
+}
+
+
+/* =========================================
+   CELULAR
+   ========================================= */
+
+/* Ajustes responsivos para celulares: reorganiza conteúdo e reduz espaços/tamanhos. */
+@media (max-width: 700px) {
+
+/* Distribui as partes da seção Sobre o Herói em colunas usando CSS Grid. */
+    .sobre-grid {
+        grid-template-columns: 1fr;
+    }
+
+/* Estiliza a ficha com os dados básicos do herói. */
+    .ficha-heroi {
+        grid-column: auto;
+    }
+
+/* Define a área reservada à imagem principal do herói. */
+    .imagem-heroi {
+        height: 450px;
+    }
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+    .sobre-heroi h1 {
+        font-size: 42px;
+    }
+
+}
+
+/* =========================ATRIBUTOS========================= */
+.conteudo-atributos {
+    display: grid;
+    grid-template-columns: minmax(280px, 0.85fr) minmax(0, 1.5fr);
+    gap: 25px;
+
+    align-items: start;
+}
+
+.atributos-basicos,
+.habilidade,
+.item,
+.conquista,
+
+/* Conquistas realizadas ficam douradas; as não realizadas ficam cinzas. */
+.lista-conquistas .conquista:nth-child(-n+3) {
+    border-color: rgba(212, 175, 55, 0.75);
+    background: linear-gradient(145deg, rgba(35, 25, 13, 0.94), rgba(12, 8, 10, 0.96));
+}
+
+/* Aplica o estilo de conquista concluída às três primeiras conquistas da lista. */
+.lista-conquistas .conquista:nth-child(-n+3) .medalha {
+    border-color: var(--dourado);
+    color: var(--dourado);
+    background: rgba(212, 175, 55, 0.08);
+    box-shadow: 0 0 9px rgba(212, 175, 55, 0.1);
+}
+
+/* Aplica o estilo de conquista concluída às três primeiras conquistas da lista. */
+.lista-conquistas .conquista:nth-child(-n+3) .info-conquista h4 {
+    color: #e4d3a2;
+}
+
+/* Aplica o estilo cinza de conquista ainda não concluída a partir da quarta conquista. */
+.lista-conquistas .conquista:nth-child(n+4) {
+    border-color: rgba(125, 119, 128, 0.32);
+    background: linear-gradient(145deg, rgba(38, 34, 39, 0.72), rgba(15, 13, 16, 0.94));
+    box-shadow: none;
+}
+
+/* Aplica o estilo cinza de conquista ainda não concluída a partir da quarta conquista. */
+.lista-conquistas .conquista:nth-child(n+4) .medalha {
+    border-color: #68616b;
+    color: #827b85;
+    background: rgba(130, 123, 133, 0.08);
+    box-shadow: none;
+}
+
+/* Aplica o estilo cinza de conquista ainda não concluída a partir da quarta conquista. */
+.lista-conquistas .conquista:nth-child(n+4) .info-conquista h4 {
+    color: #aaa4ad;
+}
+
+/* Aplica o estilo cinza de conquista ainda não concluída a partir da quarta conquista. */
+.lista-conquistas .conquista:nth-child(n+4) .info-conquista p {
+    color: #817b84;
+}
+
+/* Aplica o estilo cinza de conquista ainda não concluída a partir da quarta conquista. */
+.lista-conquistas .conquista:nth-child(n+4):hover {
+    border-color: rgba(150, 143, 154, 0.5);
+    background: linear-gradient(145deg, rgba(48, 43, 50, 0.82), rgba(18, 15, 19, 0.96));
+    box-shadow: 0 0 14px rgba(120, 113, 125, 0.07);
+}
+
+/* Aplica o estilo cinza de conquista ainda não concluída a partir da quarta conquista. */
+.lista-conquistas .conquista:nth-child(n+4):hover .medalha {
+    border-color: #8a828d;
+    color: #a29aa5;
+    box-shadow: none;
+}
+
+
+.foto-galeria,
+/* Organiza a área de contato com a guilda. */
+.conteudo-contato {
+    border: 1px solid var(--dourado-escuro);
+    background: rgba(15, 10, 20, 0.86);
+}
+
+/* Estiliza o painel com os atributos básicos do personagem. */
+.atributos-basicos {
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.atributos-basicos h3,
+.habilidades h3,
+.equipamentos h3,
+/* Define a aparência e o comportamento visual do seletor indicado. */
+.conquistas h3 {
+    margin: 0 0 22px;
+
+    color: var(--dourado);
+
+    font-family: "Cinzel", Georgia, serif;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* Organiza a lista de atributos em uma coluna ou grade, conforme a regra definida. */
+.lista-atributos {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+}
+
+/* Estiliza cada bloco individual de atributo. */
+.status {
+    width: 100%;
+}
+
+/* Alinha o nome do atributo e seu valor na mesma linha. */
+.status-topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+
+    margin-bottom: 7px;
+}
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+.status-topo span {
+    color: var(--branco);
+
+    font-family: "Courier New", monospace;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+.status-topo strong {
+    color: var(--dourado);
+
+    font-family: "Courier New", monospace;
+    font-size: 12px;
+}
+
+/* Desenha a trilha/fundo da barra de atributo. */
+.barra {
+    width: 100%;
+    height: 9px;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+    background: var(--barra-vazia);
+}
+
+/* Desenha a parte preenchida da barra para representar o nível do atributo. */
+.barra-preenchida {
+    height: 100%;
+
+    border-radius: 20px;
+
+    background: linear-gradient(
+        90deg,
+        var(--roxo),
+        var(--dourado)
+    );
+}
+
+
+/* =========================HABILIDADES========================= */
+.habilidades {
+    min-width: 0;
+}
+
+/* Organiza os cartões de habilidades. */
+.lista-habilidades {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+/* Define o visual de cada cartão de habilidade. */
+.habilidade {
+    min-height: 105px;
+    padding: 16px;
+
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+
+    border-radius: 8px;
+
+    transition:
+        transform var(--transicao),
+        background-color var(--transicao),
+        border-color var(--transicao);
+}
+
+/* Define o efeito visual que aparece quando o cursor passa sobre este elemento. */
+.habilidade:hover {
+    transform: translateY(-3px);
+    background-color: #1a1022;
+    border-color: var(--dourado);
+}
+
+/* Define a área e o alinhamento do ícone de cada habilidade. */
+.icone {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    border: 1px solid var(--dourado);
+    border-radius: 6px;
+
+    background: var(--roxo-escuro);
+}
+
+/* Ajusta a imagem do ícone dentro do espaço reservado. */
+.icone img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: contain;
+}
+
+/* Organiza o texto explicativo de cada habilidade. */
+.descricao-habilidade {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+.descricao-habilidade h4 {
+    margin: 0 0 7px;
+
+    color: var(--branco);
+
+    font-family: "Cinzel", Georgia, serif;
+    font-size: 14px;
+}
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+.descricao-habilidade p {
+    margin: 0;
+
+    color: var(--cinza-claro);
+    font-size: 13px;
+    line-height: 1.45;  
+}
+
+
+/* ========================= INVENTÁRIO========================= */
+.equipamentos h3,
+/* Define a aparência e o comportamento visual do seletor indicado. */
+.conquistas h3 {
+    margin-bottom: 20px;
+}
+
+/* Cria a grade dos cartões do inventário. */
+.lista-itens {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+/* Estiliza cada cartão de item do inventário. */
+.item {
+    overflow: hidden;
+    border-radius: 9px;
+
+    transition:
+        transform var(--transicao),
+        background-color var(--transicao),
+        border-color var(--transicao);
+}
+
+/* Define o efeito visual que aparece quando o cursor passa sobre este elemento. */
+.item:hover {
+    position: relative;
+    z-index: 2;
+
+    transform: scale(1.04);
+
+    background-color: #1a1022;
+    border-color: var(--dourado);
+}
+
+/* Dá um tratamento visual especial ao item destacado/mais importante. */
+.item.destaque {
+    box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.18);
+}
+
+/* Controla o tamanho e o recorte da imagem do item. */
+.item > img {
+    width: 100%;
+    height: 500px;
+
+    display: block;
+
+    object-fit: cover;
+    
+}
+
+/* Organiza nome e descrição de cada item. */
+.info-item {
+    min-height: 135px;
+    padding: 15px;
+}
+
+/* Organiza a parte textual deste cartão. */
+.info-item h4 {
+    margin: 0 0 8px;
+
+    color: var(--branco);
+
+    font-family: "Cinzel", Georgia, serif;
+    font-size: 20px;
+}
+
+/* Organiza a parte textual deste cartão. */
+.info-item p {
+    margin: 10px 0 0;
+
+    color: var(--cinza);
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+
+/* RARIDADES */
+.raridade {
+    display: inline-block;
+
+    padding: 3px 7px;
+
+    border: 1px solid;
+    border-radius: 4px;
+
+    font-family: "Courier New", monospace;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+.lendaria {
+    color: #ffd83d;
+    border-color: #ffd83d;
+}
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+.raro {
+    color: #b66cff;
+    border-color: #b66cff;
+}
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+.epica {
+    color: #ff5bd6;
+    border-color: #ff5bd6;
+}
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+.incomum {
+    color: #6ee66e;
+    border-color: #6ee66e;
+}
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+.comum {
+    color: var(--branco);
+    border-color: var(--branco);
+}
+
+
+/* =========================CONQUISTAS========================= */
+/* =========================================================
+   FEITOS MEMORÁVEIS
+   ========================================================= */
+
+/* Estiliza o painel de conquistas memoráveis. */
+.conquistas {
+    margin-top: 55px;
+}
+
+
+/* =========================
+   TÍTULO
+   ========================= */
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+.conquistas h3 {
+    margin: 0 0 20px;
+
+    color: var(--dourado);
+
+    font-family: "Cinzel", Georgia, serif;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+
+/* =========================
+   GRID DOS FEITOS
+   4 EM CIMA + 4 EMBAIXO
+   ========================= */
+
+/* Organiza os cartões de conquistas em uma lista. */
+.lista-conquistas {
+    display: grid;
+
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap: 14px;
+}
+
+
+/* =========================
+   CARD DO FEITO
+   ========================= */
+
+/* Define o formato visual de cada conquista. */
+.conquista {
+    min-height: 105px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 12px;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(128, 101, 42, 0.75);
+    border-radius: 8px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(28, 14, 38, 0.95),
+            rgba(10, 5, 17, 0.96)
+        );
+
+    box-shadow:
+        inset 0 0 18px rgba(141, 77, 204, 0.04),
+        0 5px 15px rgba(0, 0, 0, 0.25);
+
+    transition:
+        transform 0.25s ease,
+        background-color 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+/* =========================
+   MEDALHA
+   ========================= */
+
+/* Estiliza o símbolo/medalha que identifica a conquista. */
+.medalha {
+    width: 48px;
+    height: 48px;
+
+    min-width: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    border: 1px solid var(--dourado);
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(141, 77, 204, 0.35),
+            rgba(9, 3, 19, 0.95)
+        );
+
+    color: var(--dourado);
+
+    font-size: 22px;
+
+    box-shadow:
+        0 0 8px rgba(212, 175, 55, 0.18),
+        inset 0 0 10px rgba(141, 77, 204, 0.15);
+
+    flex-shrink: 0;
+
+    z-index: 1;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background-color 0.25s ease;
+}
+
+
+/* =========================
+   CÍRCULO ORNAMENTAL
+   ========================= */
+
+/* Cria um detalhe decorativo com pseudo-elemento, sem precisar adicionar outro elemento no HTML. */
+.medalha::before {
+    content: "";
+
+    position: absolute;
+
+    width: 58px;
+    height: 58px;
+
+    border: 1px solid rgba(212, 175, 55, 0.20);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+
+/* =========================
+   PEQUENO DETALHE DA MEDALHA
+   ========================= */
+
+/* Cria um detalhe decorativo com pseudo-elemento, sem precisar adicionar outro elemento no HTML. */
+.medalha::after {
+    content: "✦";
+
+    position: absolute;
+
+    top: -8px;
+    right: -8px;
+
+    color: rgba(212, 175, 55, 0.75);
+
+    font-size: 11px;
+
+    text-shadow:
+        0 0 6px rgba(212, 175, 55, 0.45);
+}
+
+
+/* =========================
+   INFORMAÇÕES
+   ========================= */
+
+/* Organiza título e descrição da conquista. */
+.info-conquista {
+    min-width: 0;
+    flex: 1;
+}
+
+
+/* Organiza a parte textual deste cartão. */
+.info-conquista h4 {
+    margin: 0 0 5px;
+
+    color: var(--branco);
+
+    font-family: "Cinzel", Georgia, serif;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    line-height: 1.25;
+}
+
+
+/* Organiza a parte textual deste cartão. */
+.info-conquista p {
+    margin: 0;
+
+    color: var(--cinza);
+
+    font-family: "EB Garamond", Georgia, serif;
+
+    font-size: 11px;
+
+    line-height: 1.35;
+}
+
+
+/* =========================
+   HOVER DO CARD
+   ========================= */
+
+/* Define o efeito visual que aparece quando o cursor passa sobre este elemento. */
+.conquista:hover {
+    transform: translateY(-4px);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(42, 18, 57, 0.98),
+            rgba(14, 6, 22, 0.98)
+        );
+
+    border-color: var(--dourado);
+
+    box-shadow:
+        0 0 18px rgba(141, 77, 204, 0.18),
+        0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+
+/* =========================
+   HOVER DA MEDALHA
+   ========================= */
+
+/* Define o efeito visual que aparece quando o cursor passa sobre este elemento. */
+.conquista:hover .medalha {
+    transform: scale(1.08);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(141, 77, 204, 0.50),
+            rgba(9, 3, 19, 1)
+        );
+
+    box-shadow:
+        0 0 15px rgba(212, 175, 55, 0.35),
+        0 0 25px rgba(141, 77, 204, 0.20),
+        inset 0 0 12px rgba(141, 77, 204, 0.25);
+}
+
+
+/* =========================================================
+   TABLET
+   2 COLUNAS
+   ========================================================= */
+
+/* Ajustes responsivos para telas médias, como tablets e notebooks menores. */
+@media (max-width: 1024px) {
+
+/* Organiza os cartões de conquistas em uma lista. */
+    .lista-conquistas {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+/* =========================================================
+   CELULAR
+   1 COLUNA
+   ========================================================= */
+
+/* Ajustes responsivos para celulares: reorganiza conteúdo e reduz espaços/tamanhos. */
+@media (max-width: 700px) {
+
+/* Organiza os cartões de conquistas em uma lista. */
+    .lista-conquistas {
+        grid-template-columns: 1fr;
+    }
+
+/* Define o formato visual de cada conquista. */
+    .conquista {
+        min-height: 95px;
+    }
+
+/* Estiliza o símbolo/medalha que identifica a conquista. */
+    .medalha {
+        width: 46px;
+        height: 46px;
+
+        min-width: 46px;
+
+        font-size: 21px;
+    }
+
+/* Cria um detalhe decorativo com pseudo-elemento, sem precisar adicionar outro elemento no HTML. */
+    .medalha::before {
+        width: 56px;
+        height: 56px;
+    }
+
+}
+
+/* =========================GALERIA========================= */
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+}
+
+/* Estiliza cada cartão da galeria de imagens do personagem. */
+.foto-galeria {
+    overflow: hidden;
+    border-radius: 10px;
+
+    transition:
+        transform var(--transicao),
+        background-color var(--transicao),
+        border-color var(--transicao);
+}
+
+/* Define o efeito visual que aparece quando o cursor passa sobre este elemento. */
+.foto-galeria:hover {
+    transform: scale(1.03);
+
+    background-color: #1a1022;
+    border-color: var(--dourado);
+}
+
+/* Imagem da galeria: mostra a personagem inteira e evita cortar a cabeça. */
+.foto-galeria img {
+    display: block;
+    width: 100%;
+    height: 430px;
+    object-fit: cover; /* Preenche sem deixar faixas vazias nas laterais. */
+    object-position: center 12%; /* Dá prioridade à parte superior da personagem. */
+    background-color: #080608;
+}
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+.legenda-galeria {
+    padding: 18px;
+}
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+.legenda-galeria h3 {
+    margin: 0 0 7px;
+
+    color: var(--dourado);
+
+    font-family: "Cinzel", Georgia, serif;
+    font-size: 16px;
+}
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+.legenda-galeria p {
+    margin: 0;
+
+    color: var(--cinza);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+
+/* =========================CONTATO COM A GUILDA========================= */
+.conteudo-contato {
+    padding: 40px;
+
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 35px;
+
+    border-radius: 10px;
+}
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+.texto-contato h3 {
+    margin: 0 0 15px;
+
+    color: var(--branco);
+
+    font-family: "Cinzel", Georgia, serif;
+    font-size: 25px;
+}
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+.texto-contato > p:not(.eyebrow) {
+    margin: 0 0 12px;
+
+    color: var(--cinza-claro);
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+.acoes-contato {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 14px;
+}
+
+/* Estiliza o botão de contato, incluindo cor, formato e resposta ao mouse. */
+.botao-contato {
+    display: block;
+
+    padding: 14px 18px;
+
+    color: var(--dourado);
+    background: var(--roxo-escuro);
+
+    border: 1px solid var(--dourado-escuro);
+    border-radius: 6px;
+
+    text-align: center;
+    text-decoration: none;
+
+    font-family: "Courier New", monospace;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    transition:
+        transform var(--transicao),
+        background-color var(--transicao),
+        color var(--transicao);
+}
+
+.botao-contato:hover,
+/* Define o destaque visível quando este elemento recebe foco pelo teclado. */
+.botao-contato:focus-visible {
+    transform: scale(1.05);
+
+    background-color: var(--dourado);
+    color: var(--preto);
+}
+
+/* Organiza os links relacionados à guilda/comunidade. */
+.links-guilda {
+    grid-column: 1 / -1;
+
+    padding-top: 22px;
+
+    display: flex;
+    align-items: center;
+    gap: 25px;
+
+    border-top: 1px solid var(--dourado-escuro);
+}
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+.links-guilda h4 {
+    margin: 0;
+
+    color: var(--dourado);
+
+    font-family: "Courier New", monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+.links-guilda ul {
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    list-style: none;
+}
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+.links-guilda a {
+    color: var(--cinza-claro);
+    text-decoration: none;
+
+    font-size: 13px;
+
+    transition: color var(--transicao);
+}
+
+.links-guilda a:hover,
+/* Define o destaque visível quando este elemento recebe foco pelo teclado. */
+.links-guilda a:focus-visible {
+    color: var(--dourado);
+}
+
+
+/* =========================
+   RODAPÉ
+   ========================= */
+/* Define o rodapé da página. */
+footer {
+    margin-top: 100px;
+    padding: 30px 20px;
+
+    text-align: center;
+
+    border-top: 1px solid var(--dourado-escuro);
+    background: var(--preto-header);
+}
+
+/* Controla o espaçamento e a aparência dos parágrafos do rodapé. */
+footer p {
+    margin: 5px 0;
+
+    color: var(--cinza);
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE
+   Desktop: 3 colunas
+   Tablet: 2 colunas
+   Celular: 1 coluna
+   ========================================================= */
+
+
+/* =========================
+   TABLET
+   ========================= */
+/* Ajustes responsivos para telas médias, como tablets e notebooks menores. */
+@media (max-width: 1024px) {
+
+/* Organiza o cabeçalho fixo no topo, com título e menu alinhados em Flexbox. */
+    header {
+        padding: 15px 4%;
+    }
+
+/* Organiza os links do menu em linha e permite que quebrem para outra linha se faltar espaço. */
+    nav {
+        gap: 15px;
+    }
+
+/* Distribui as partes da seção Sobre o Herói em colunas usando CSS Grid. */
+    .sobre-grid {
+        grid-template-columns: 260px 1fr;
+        gap: 35px;
+    }
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+    .categorias {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+/* Organiza o conteúdo da área de atributos e conquistas. */
+    .conteudo-atributos {
+        grid-template-columns: 1fr;
+    }
+
+    .lista-itens,
+    .lista-conquistas,
+/* Organiza a seção da galeria de imagens. */
+    .galeria {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+/* Define o enquadramento das imagens da galeria; contain mostra a imagem inteira sem cortar a cabeça. */
+    .foto-galeria img {
+        display: block;
+        width: 100%;
+        height: 380px;
+        object-fit: cover; /* Preenche sem deixar faixas vazias nas laterais. */
+        object-position: center 12%; /* Dá prioridade à parte superior da personagem. */
+        background-color: #080608;
+    }
+}
+
+
+/* =========================
+   CELULAR
+   ========================= */
+/* Ajustes responsivos para celulares: reorganiza conteúdo e reduz espaços/tamanhos. */
+@media (max-width: 700px) {
+
+/* Configura a rolagem suave e o espaço superior ao navegar para âncoras. */
+    html {
+        scroll-padding-top: 150px;
+    }
+
+/* Organiza o cabeçalho fixo no topo, com título e menu alinhados em Flexbox. */
+    header {
+        position: relative;
+
+        padding: 18px 5%;
+
+        flex-direction: column;
+        align-items: center;
+    }
+
+/* Organiza os links do menu em linha e permite que quebrem para outra linha se faltar espaço. */
+    nav {
+        width: 100%;
+
+        justify-content: center;
+        gap: 10px 16px;
+    }
+
+/* Define aparência, espaçamento e animação dos links do menu. */
+    nav a {
+        font-size: 10px;
+    }
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+    .inicio {
+        min-height: 75vh;
+    }
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+    .inicio-conteudo {
+        padding: 50px 20px;
+    }
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+    .inicio h1 {
+        font-size: 46px;
+    }
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+    .inicio h2 {
+        font-size: 22px;
+    }
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+    .inicio-conteudo > p:not(.eyebrow) {
+        font-size: 16px;
+    }
+
+/* Controla o espaçamento e a largura das seções principais. */
+    .secao {
+        width: 90%;
+        margin: 75px auto;
+    }
+
+/* Organiza o título e a decoração visual de cada seção. */
+    .titulo-secao {
+        gap: 10px;
+    }
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+    .titulo-secao h2 {
+        font-size: 13px;
+        text-align: center;
+    }
+
+/* Distribui as partes da seção Sobre o Herói em colunas usando CSS Grid. */
+    .sobre-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+    .imagem1 {
+        max-width: 310px;
+        margin: 0 auto;
+    }
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+    .imagem1 img {
+        height: 420px;
+    }
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+    .sobre-conteudo {
+        text-align: left;
+    }
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+    .nome {
+        font-size: 48px;
+    }
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+    .categorias {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+/* Organiza os cartões de habilidades. */
+    .lista-habilidades {
+        grid-template-columns: 1fr;
+    }
+
+    .lista-itens,
+    .lista-conquistas,
+/* Organiza a seção da galeria de imagens. */
+    .galeria {
+        grid-template-columns: 1fr;
+    }
+
+/* Controla o tamanho e o recorte da imagem do item. */
+    .item > img {
+        height: 230px;
+    }
+
+/* Define o enquadramento das imagens da galeria; contain mostra a imagem inteira sem cortar a cabeça. */
+    .foto-galeria img {
+        display: block;
+        width: 100%;
+        height: 420px;
+        object-fit: cover; /* Preenche sem deixar faixas vazias nas laterais. */
+        object-position: center 12%; /* Dá prioridade à parte superior da personagem. */
+        background-color: #080608;
+    }
+
+/* Organiza a área de contato com a guilda. */
+    .conteudo-contato {
+        grid-template-columns: 1fr;
+        padding: 25px;
+    }
+
+/* Organiza os links relacionados à guilda/comunidade. */
+    .links-guilda {
+        grid-column: auto;
+
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+    .links-guilda ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+
+/* =========================
+   CELULAR PEQUENO
+   ========================= */
+/* Ajustes extras para celulares bem estreitos. */
+@media (max-width: 420px) {
+
+/* Estiliza o nome/logo do site no cabeçalho. */
+    .titulo {
+        font-size: 20px;
+    }
+
+/* Organiza os links do menu em linha e permite que quebrem para outra linha se faltar espaço. */
+    nav {
+        gap: 8px 12px;
+    }
+
+/* Define aparência, espaçamento e animação dos links do menu. */
+    nav a {
+        font-size: 9px;
+    }
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+    .inicio h1 {
+        font-size: 38px;
+    }
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+    .nome {
+        font-size: 40px;
+    }
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+    .titulo-secao h2 {
+        font-size: 11px;
+    }
+
+/* Define o visual de cada cartão de habilidade. */
+    .habilidade {
+        padding: 13px;
+    }
+
+/* Define a área e o alinhamento do ícone de cada habilidade. */
+    .icone {
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+    }
+}
+
+
+/* =========================
+   REDUÇÃO DE MOVIMENTO
+   ========================= */
+/* Acessibilidade: reduz animações para quem prefere menos movimento nas configurações do dispositivo. */
+@media (prefers-reduced-motion: reduce) {
+
+/* Configura a rolagem suave e o espaço superior ao navegar para âncoras. */
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+/* Cria um detalhe decorativo com pseudo-elemento, sem precisar adicionar outro elemento no HTML. */
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}
+
+
+/* =========================================================
+   ✦ IDENTIDADE VISUAL — ANDRÔMEDA / SUBMUNDO ✦
+   Roxo profundo + dourado antigo + brilho mágico
+   ========================================================= */
+
+/* Define o fundo geral, as cores do texto e a fonte padrão da página. */
+body {
+    background-color: #020106;
+    background-image:
+        radial-gradient(circle at 12% 18%, rgba(137, 55, 220, .22) 0, transparent 25%),
+        radial-gradient(circle at 88% 72%, rgba(113, 35, 190, .20) 0, transparent 28%),
+        radial-gradient(circle at 50% 45%, rgba(75, 20, 120, .12) 0, transparent 38%),
+        linear-gradient(135deg, #020106 0%, #090313 45%, #030207 100%);
+}
+
+/* Organiza o cabeçalho fixo no topo, com título e menu alinhados em Flexbox. */
+header {
+    background:
+        linear-gradient(90deg, rgba(8, 4, 14, .98), rgba(18, 8, 28, .96), rgba(8, 4, 14, .98));
+    border-bottom: 2px solid var(--dourado-escuro);
+    box-shadow:
+        0 5px 25px rgba(0, 0, 0, .55),
+        0 1px 12px rgba(141, 77, 204, .18);
+}
+
+/* Estiliza o nome/logo do site no cabeçalho. */
+.titulo {
+    color: #fff;
+    text-shadow:
+        0 0 8px rgba(212, 175, 55, .20),
+        0 0 20px rgba(141, 77, 204, .25);
+}
+
+/* Cria um detalhe decorativo com pseudo-elemento, sem precisar adicionar outro elemento no HTML. */
+.titulo::before {
+    content: "✦ ";
+    color: var(--dourado);
+}
+
+/* Define aparência, espaçamento e animação dos links do menu. */
+nav a {
+    position: relative;
+    color: #eeeaf2;
+}
+
+/* Cria um detalhe decorativo com pseudo-elemento, sem precisar adicionar outro elemento no HTML. */
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 1px;
+    height: 1px;
+    transform: scaleX(0);
+    transform-origin: center;
+    background: var(--dourado);
+    box-shadow: 0 0 7px rgba(212, 175, 55, .7);
+    transition: transform .25s ease;
+}
+
+nav a:hover::after,
+/* Define o destaque visível quando este elemento recebe foco pelo teclado. */
+nav a:focus-visible::after {
+    transform: scaleX(1);
+}
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+.inicio-conteudo {
+    position: relative;
+    overflow: hidden;
+
+    background:
+        linear-gradient(145deg, rgba(10, 4, 18, .92), rgba(26, 11, 37, .72));
+    border-color: rgba(212, 175, 55, .55);
+
+    box-shadow:
+        inset 0 0 60px rgba(141, 77, 204, .08),
+        0 0 0 1px rgba(141, 77, 204, .10),
+        0 25px 70px rgba(0, 0, 0, .55);
+}
+
+.inicio-conteudo::before,
+/* Cria um detalhe decorativo com pseudo-elemento, sem precisar adicionar outro elemento no HTML. */
+.inicio-conteudo::after {
+    content: "✦";
+    position: absolute;
+    color: rgba(212, 175, 55, .45);
+    font-size: 30px;
+}
+
+/* Cria um detalhe decorativo com pseudo-elemento, sem precisar adicionar outro elemento no HTML. */
+.inicio-conteudo::before {
+    top: 18px;
+    left: 25px;
+}
+
+/* Cria um detalhe decorativo com pseudo-elemento, sem precisar adicionar outro elemento no HTML. */
+.inicio-conteudo::after {
+    right: 25px;
+    bottom: 18px;
+}
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+.inicio h1 {
+    text-shadow:
+        0 0 10px rgba(141, 77, 204, .45),
+        0 0 35px rgba(141, 77, 204, .20);
+}
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+.inicio h2 {
+    text-shadow: 0 0 12px rgba(212, 175, 55, .25);
+}
+
+.botao-principal,
+/* Estiliza o botão de contato, incluindo cor, formato e resposta ao mouse. */
+.botao-contato {
+    box-shadow:
+        0 0 0 1px rgba(212, 175, 55, .05),
+        0 5px 18px rgba(0, 0, 0, .3);
+}
+
+.botao-principal:hover,
+.botao-principal:focus-visible,
+.botao-contato:hover,
+/* Define o destaque visível quando este elemento recebe foco pelo teclado. */
+.botao-contato:focus-visible {
+    box-shadow:
+        0 0 18px rgba(212, 175, 55, .35),
+        0 8px 25px rgba(0, 0, 0, .45);
+}
+
+/* Organiza o título e a decoração visual de cada seção. */
+.titulo-secao {
+    position: relative;
+}
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+.titulo-secao h2 {
+    text-shadow: 0 0 10px rgba(212, 175, 55, .20);
+}
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+.titulo-secao span {
+    box-shadow: 0 0 7px rgba(128, 101, 42, .28);
+}
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+.imagem1 {
+    position: relative;
+
+    background:
+        linear-gradient(145deg, #11051b, #090313 55%, #160820);
+
+    border-color: #9a7b2f;
+
+    box-shadow:
+        0 0 0 1px rgba(141, 77, 204, .15),
+        0 0 30px rgba(100, 35, 160, .16),
+        0 20px 45px rgba(0, 0, 0, .50);
+}
+
+.imagem1::before,
+/* Cria um detalhe decorativo com pseudo-elemento, sem precisar adicionar outro elemento no HTML. */
+.imagem1::after {
+    position: absolute;
+    color: var(--dourado);
+    font-size: 18px;
+    z-index: 2;
+}
+
+/* Cria um detalhe decorativo com pseudo-elemento, sem precisar adicionar outro elemento no HTML. */
+.imagem1::before {
+    content: "✦";
+    top: 8px;
+    left: 10px;
+}
+
+/* Cria um detalhe decorativo com pseudo-elemento, sem precisar adicionar outro elemento no HTML. */
+.imagem1::after {
+    content: "✦";
+    right: 10px;
+    bottom: 8px;
+}
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+.nome {
+    text-shadow: 0 0 20px rgba(141, 77, 204, .28);
+}
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+.categorias {
+    position: relative;
+    background:
+        linear-gradient(135deg, rgba(13, 6, 22, .94), rgba(28, 12, 39, .72));
+    border-color: rgba(128, 101, 42, .75);
+    box-shadow:
+        inset 0 0 30px rgba(141, 77, 204, .06),
+        0 12px 30px rgba(0, 0, 0, .25);
+}
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+.categoria {
+    padding: 10px;
+    border-left: 1px solid rgba(212, 175, 55, .22);
+    transition: background-color .25s ease, border-color .25s ease;
+}
+
+/* Define o efeito visual que aparece quando o cursor passa sobre este elemento. */
+.categoria:hover {
+    background: rgba(141, 77, 204, .08);
+    border-left-color: rgba(212, 175, 55, .65);
+}
+
+.atributos-basicos,
+.habilidade,
+.item,
+.conquista,
+.foto-galeria,
+/* Organiza a área de contato com a guilda. */
+.conteudo-contato {
+    background:
+        linear-gradient(145deg, rgba(17, 8, 25, .95), rgba(9, 4, 15, .91));
+    border-color: rgba(128, 101, 42, .72);
+    box-shadow:
+        inset 0 0 25px rgba(141, 77, 204, .035),
+        0 10px 25px rgba(0, 0, 0, .22);
+}
+
+/* Estiliza o painel com os atributos básicos do personagem. */
+.atributos-basicos {
+    box-shadow:
+        inset 0 0 35px rgba(141, 77, 204, .07),
+        0 12px 30px rgba(0, 0, 0, .30);
+}
+
+/* Desenha a trilha/fundo da barra de atributo. */
+.barra {
+    background:
+        linear-gradient(90deg, #21192a, #352d3d);
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, .7);
+}
+
+/* Desenha a parte preenchida da barra para representar o nível do atributo. */
+.barra-preenchida {
+    background:
+        linear-gradient(90deg, #6733a0 0%, #9b55d4 55%, #d4af37 100%);
+    box-shadow:
+        0 0 8px rgba(141, 77, 204, .45),
+        0 0 5px rgba(212, 175, 55, .20);
+}
+
+/* Define o visual de cada cartão de habilidade. */
+.habilidade {
+    position: relative;
+}
+
+/* Define o efeito visual que aparece quando o cursor passa sobre este elemento. */
+.habilidade:hover {
+    transform: translateY(-4px);
+    background:
+        linear-gradient(145deg, rgba(35, 14, 49, .96), rgba(15, 6, 24, .94));
+    border-color: var(--dourado);
+    box-shadow:
+        0 0 20px rgba(141, 77, 204, .16),
+        0 10px 25px rgba(0, 0, 0, .30);
+}
+
+/* Define a área e o alinhamento do ícone de cada habilidade. */
+.icone {
+    background:
+        radial-gradient(circle, rgba(141, 77, 204, .25), transparent 70%),
+        #090313;
+    box-shadow:
+        inset 0 0 15px rgba(141, 77, 204, .18),
+        0 0 10px rgba(212, 175, 55, .08);
+}
+
+/* Define o efeito visual que aparece quando o cursor passa sobre este elemento. */
+.item:hover {
+    transform: translateY(-5px) scale(1.025);
+    background:
+        linear-gradient(145deg, rgba(37, 14, 50, .98), rgba(12, 5, 19, .95));
+    border-color: var(--dourado);
+    box-shadow:
+        0 0 25px rgba(141, 77, 204, .18),
+        0 12px 28px rgba(0, 0, 0, .42);
+}
+
+.item > img,
+.conquista > img,
+/* Define o enquadramento das imagens da galeria; contain mostra a imagem inteira sem cortar a cabeça. */
+.foto-galeria img {
+    transition: transform .35s ease, filter .35s ease;
+}
+
+.item:hover > img,
+.conquista:hover > img,
+/* Define o efeito visual que aparece quando o cursor passa sobre este elemento. */
+.foto-galeria:hover img {
+    transform: scale(1.035);
+    filter: brightness(1.08) saturate(1.08);
+}
+
+/* Dá um tratamento visual especial ao item destacado/mais importante. */
+.item.destaque {
+    border-color: rgba(212, 175, 55, .85);
+    box-shadow:
+        0 0 20px rgba(212, 175, 55, .10),
+        inset 0 0 25px rgba(141, 77, 204, .07);
+}
+
+/* Define o efeito visual que aparece quando o cursor passa sobre este elemento. */
+.conquista:hover {
+    background:
+        linear-gradient(145deg, rgba(35, 14, 49, .98), rgba(12, 5, 19, .95));
+    box-shadow:
+        0 0 22px rgba(141, 77, 204, .18),
+        0 0 8px rgba(212, 175, 55, .10);
+}
+
+/* Define o efeito visual que aparece quando o cursor passa sobre este elemento. */
+.foto-galeria:hover {
+    background:
+        linear-gradient(145deg, rgba(35, 14, 49, .98), rgba(12, 5, 19, .95));
+    box-shadow:
+        0 0 25px rgba(141, 77, 204, .17),
+        0 15px 30px rgba(0, 0, 0, .35);
+}
+
+/* Define o enquadramento das imagens da galeria; contain mostra a imagem inteira sem cortar a cabeça. */
+.foto-galeria img {
+    filter: brightness(.90) saturate(.95);
+}
+
+/* Organiza os links relacionados à guilda/comunidade. */
+.links-guilda {
+    background: linear-gradient(
+        90deg,
+        rgba(141, 77, 204, .035),
+        transparent,
+        rgba(212, 175, 55, .025)
+    );
+}
+
+/* Define o rodapé da página. */
+footer {
+    background:
+        linear-gradient(180deg, #08040d, #030207);
+    box-shadow:
+        inset 0 10px 25px rgba(141, 77, 204, .04);
+}
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+footer p:first-child {
+    color: #d4af37;
+    font-family: "Cinzel", Georgia, serif;
+}
+
+
+/* =========================================================
+   ✦ ORNAMENTAÇÃO RESPONSIVA
+   ========================================================= */
+
+/* Ajustes responsivos para celulares: reorganiza conteúdo e reduz espaços/tamanhos. */
+@media (max-width: 700px) {
+    .inicio-conteudo::before,
+/* Cria um detalhe decorativo com pseudo-elemento, sem precisar adicionar outro elemento no HTML. */
+    .inicio-conteudo::after {
+        font-size: 20px;
+    }
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+    .categoria {
+        border-left: none;
+        border-bottom: 1px solid rgba(212, 175, 55, .16);
+    }
+
+/* Define a aparência e o comportamento visual do seletor indicado. */
+    .categoria:last-child {
+        border-bottom: none;
+    }
+}
+
+

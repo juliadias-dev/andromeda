@@ -1,0 +1,889 @@
+/* Cores e medidas reutilizadas pelo formulário. */
+:root {
+    --preto: #030207;
+    --preto-2: #08040d;
+    --roxo-escuro: #090313;
+    --roxo: #8d4dcc;
+    --roxo-claro: #b66cff;
+
+    --dourado: #d4af37;
+    --dourado-escuro: #80652a;
+
+    --branco: #ffffff;
+    --cinza: #aaa4b0;
+    --cinza-claro: #bdb8c2;
+
+    --transicao: 0.25s ease;
+}
+/* Base da página e fundo escuro. */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    color: var(--branco);
+
+    background-color: var(--preto);
+
+    background-image:
+        radial-gradient(
+            ellipse at 15% 20%,
+            rgba(105, 35, 180, 0.35) 0%,
+            rgba(70, 20, 120, 0.20) 20%,
+            transparent 45%
+        ),
+
+        radial-gradient(
+            ellipse at 85% 75%,
+            rgba(115, 40, 190, 0.32) 0%,
+            rgba(75, 20, 130, 0.18) 25%,
+            transparent 50%
+        ),
+
+        radial-gradient(
+            ellipse at 50% 50%,
+            rgba(65, 20, 100, 0.20) 0%,
+            transparent 55%
+        ),
+
+        linear-gradient(
+            135deg,
+            #020106,
+            #090313,
+            #030207
+        );
+
+    background-attachment: fixed;
+
+    font-family: "EB Garamond", Georgia, serif;
+}
+
+
+/* Cabeçalho e menu. */
+
+header {
+    min-height: 4.5rem;
+
+    padding: 0 5%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 1.875rem;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(8, 4, 14, 0.98),
+            rgba(18, 8, 28, 0.96),
+            rgba(8, 4, 14, 0.98)
+        );
+
+    border-bottom: 0.125rem solid var(--dourado-escuro);
+
+    box-shadow:
+        0 0.3125rem 1.5625rem rgba(0, 0, 0, 0.55),
+        0 0.0625rem 0.75rem rgba(141, 77, 204, 0.18);
+}
+
+
+/* Nome da personagem. */
+
+.titulo {
+    color: var(--branco);
+
+    text-decoration: none;
+
+    font-family: "Cinzel", Georgia, serif;
+
+    font-size: 1.5rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.125rem;
+
+    text-shadow:
+        0 0 0.5rem rgba(212, 175, 55, 0.20),
+        0 0 1.25rem rgba(141, 77, 204, 0.25);
+
+    transition: color var(--transicao);
+}
+
+
+.titulo::before {
+    content: "✦ ";
+
+    color: var(--dourado);
+}
+
+
+.titulo:hover {
+    color: var(--dourado);
+}
+
+
+/* Links de navegação. */
+
+nav {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    flex-wrap: wrap;
+
+    gap: 1.5rem;
+}
+
+
+nav a {
+    position: relative;
+
+    padding: 0.5rem 0.125rem;
+
+    color: var(--branco);
+
+    text-decoration: none;
+
+    font-family: "Courier New", monospace;
+
+    font-size: 0.6875rem;
+
+    font-weight: bold;
+
+    letter-spacing: 0.0625rem;
+
+    transition:
+        color var(--transicao),
+        transform var(--transicao);
+}
+
+
+nav a:hover {
+    color: var(--dourado);
+
+    transform: translateY(-0.125rem);
+}
+
+
+/* Estrutura principal. */
+
+main {
+    min-height: calc(100vh - 10rem);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+/* Formulário. */
+
+.pagina-formulario {
+
+    width: min(90%, 53.125rem);
+
+    margin: 5rem auto;
+}
+
+
+/* Título. */
+
+.titulo-secao {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 1.125rem;
+
+    margin-bottom: 2.5rem;
+}
+
+
+.titulo-secao span {
+
+    flex: 1;
+
+    height: 0.0625rem;
+
+    background: var(--dourado-escuro);
+
+    box-shadow:
+        0 0 0.4375rem rgba(128, 101, 42, 0.35);
+}
+
+
+.titulo-secao h1 {
+
+    margin: 0;
+
+    color: var(--dourado);
+
+    font-family: "Cinzel", Georgia, serif;
+
+    font-size: 1.25rem;
+
+    font-weight: 600;
+
+    letter-spacing: 0.0625rem;
+
+    white-space: nowrap;
+
+    text-shadow:
+        0 0 0.625rem rgba(212, 175, 55, 0.20);
+}
+
+
+/* Painel do formulário. */
+
+.formulario-container {
+
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 2.5rem;
+
+    border: 0.0625rem solid rgba(128, 101, 42, 0.80);
+
+    border-radius: 0.75rem;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(28, 13, 38, 0.97),
+            rgba(9, 4, 15, 0.98)
+        );
+
+    box-shadow:
+        inset 0 0 2.8125rem rgba(141, 77, 204, 0.07),
+        0 1.25rem 3.125rem rgba(0, 0, 0, 0.50);
+}
+
+
+/* Detalhes decorativos. */
+
+.formulario-container::before {
+
+    content: "✦";
+
+    position: absolute;
+
+    top: 0.9375rem;
+
+    left: 1.25rem;
+
+    color: rgba(212, 175, 55, 0.55);
+
+    font-size: 1.25rem;
+
+    text-shadow:
+        0 0 0.5rem rgba(212, 175, 55, 0.40);
+}
+
+
+.formulario-container::after {
+
+    content: "✦";
+
+    position: absolute;
+
+    right: 1.25rem;
+
+    bottom: 0.9375rem;
+
+    color: rgba(212, 175, 55, 0.55);
+
+    font-size: 1.25rem;
+
+    text-shadow:
+        0 0 0.5rem rgba(212, 175, 55, 0.40);
+}
+
+
+/* Texto de apresentação. */
+
+.formulario-introducao {
+
+    margin-bottom: 1.875rem;
+
+    padding-bottom: 1.5625rem;
+
+    border-bottom: 0.0625rem solid rgba(128, 101, 42, 0.45);
+}
+
+
+.eyebrow {
+
+    margin: 0 0 0.625rem;
+
+    color: var(--dourado);
+
+    font-family: "Courier New", monospace;
+
+    font-size: 1.125rem;
+
+    font-weight: bold;
+
+    letter-spacing: 0.1875rem;
+}
+
+
+.formulario-introducao h2 {
+
+    margin: 0 0 0.75rem;
+
+    color: var(--branco);
+
+    font-family: "Cinzel", Georgia, serif;
+
+    font-size: 1.875rem;
+
+    font-weight: 600;
+
+    text-shadow:
+        0 0 0.9375rem rgba(141, 77, 204, 0.20);
+}
+
+
+.formulario-introducao p:not(.eyebrow) {
+
+    margin: 0;
+
+    color: var(--cinza-claro);
+
+    font-size: 1.25rem;
+
+    line-height: 1.7;
+}
+
+
+/* Campos. */
+
+.formulario {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 1.25rem;
+}
+
+
+/* Rótulos dos campos. */
+
+.campo {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0.5rem;
+}
+
+
+.campo label {
+
+    color: var(--dourado);
+
+    font-family: "Courier New", monospace;
+
+    font-size: 1.125rem;
+
+    font-weight: bold;
+    
+    letter-spacing: 0.0625rem;
+}
+
+
+/* Campos de texto e seleção. */
+
+.campo input,
+.campo select,
+.campo textarea {
+
+    width: 100%;
+
+    padding: 0.875rem 1rem;
+
+    color: var(--branco);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(9, 3, 19, 0.98),
+            rgba(20, 8, 30, 0.96)
+        );
+
+    border: 0.0625rem solid rgba(128, 101, 42, 0.70);
+
+    border-radius: 0.375rem;
+
+    outline: none;
+
+    font-family: "EB Garamond", Georgia, serif;
+
+    font-size: 0.9375rem;
+
+    transition:
+        border-color var(--transicao),
+        box-shadow var(--transicao),
+        background-color var(--transicao);
+}
+
+
+/* Placeholders. */
+
+.campo input::placeholder,
+.campo textarea::placeholder {
+
+    color: #77717e;
+}
+
+
+/* Foco dos campos. */
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+
+    border-color: var(--dourado);
+
+    background-color: #10061a;
+
+    box-shadow:
+        0 0 0.75rem rgba(141, 77, 204, 0.25),
+        0 0 0.3125rem rgba(212, 175, 55, 0.15);
+}
+
+
+/* Seleção de opções. */
+
+.campo select {
+
+    cursor: pointer;
+}
+
+
+/* Área de texto. */
+
+.campo textarea {
+
+    min-height: 9.375rem;
+
+    resize: vertical;
+}
+
+
+/* Botões e mensagens de validação. */
+
+.botoes-formulario {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 0.9375rem;
+
+    margin-top: 0.625rem;
+}
+
+
+.botao-formulario,
+.botao-voltar {
+
+    min-height: 2.875rem;
+
+    padding: 0.75rem 1.375rem;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 0.375rem;
+
+    font-family: "Courier New", monospace;
+
+    font-size: 0.6875rem;
+
+    font-weight: bold;
+
+    letter-spacing: 0.0625rem;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        transform var(--transicao),
+        background-color var(--transicao),
+        color var(--transicao),
+        border-color var(--transicao),
+        box-shadow var(--transicao);
+}
+
+
+/* Botão de envio. */
+
+.botao-formulario {
+
+    border: 0.0625rem solid var(--dourado-escuro);
+
+    background:
+        linear-gradient(
+            135deg,
+            #12051d,
+            #090313
+        );
+
+    color: var(--dourado);
+}
+
+
+.botao-formulario:hover {
+
+    transform: translateY(-0.125rem) scale(1.02);
+
+    background: var(--dourado);
+
+    color: var(--preto);
+
+    border-color: var(--dourado);
+
+    box-shadow:
+        0 0 1.25rem rgba(212, 175, 55, 0.35);
+}
+
+
+/* Botão de retorno. */
+
+.botao-voltar {
+
+    border: 0.0625rem solid rgba(128, 101, 42, 0.60);
+
+    background: transparent;
+
+    color: var(--cinza-claro);
+}
+
+
+.botao-voltar:hover {
+
+    transform: translateY(-0.125rem);
+
+    color: var(--dourado);
+
+    border-color: var(--dourado);
+
+    background: rgba(141, 77, 204, 0.10);
+
+    box-shadow:
+        0 0 0.75rem rgba(141, 77, 204, 0.15);
+}
+
+
+/* Rodapé. */
+
+footer {
+
+    padding: 1.875rem 1.25rem;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            180deg,
+            #08040d,
+            #030207
+        );
+
+    border-top: 0.0625rem solid var(--dourado-escuro);
+}
+
+
+footer p {
+
+    margin: 0.3125rem 0;
+
+    color: var(--cinza);
+
+    font-size: 0.6875rem;
+}
+
+
+footer p:first-child {
+
+    color: var(--dourado);
+
+    font-family: "Cinzel", Georgia, serif;
+}
+
+.mensagem-feedback {
+    min-height: 1.5rem;
+    color: #f2cf79;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.mensagem-feedback.sucesso {
+    color: #9fe0b1;
+}
+
+[aria-invalid="true"] {
+    border-color: #ff7777 !important;
+    box-shadow: 0 0 0 0.15rem rgba(255, 80, 80, 0.2);
+}
+
+/* Tema claro. */
+body.tema-claro {
+    color: #120c15;
+    background-color: #887491;
+    background-image: radial-gradient(ellipse at 12% 18%, rgba(58,37,72,.36), transparent 49%), radial-gradient(ellipse at 88% 78%, rgba(48,31,63,.34), transparent 53%), radial-gradient(ellipse at 50% 48%, rgba(207,184,222,.19), transparent 54%), linear-gradient(125deg,#887491,#9784a0 52%,#7e6a89);
+    background-attachment: fixed;
+}
+
+body.tema-claro > header {
+    color: #201526;
+    background: rgba(165,142,175,.9);
+    border-color: #62466e;
+    box-shadow: 0 .25rem 1rem rgba(35,17,48,.18);
+}
+
+body.tema-claro .titulo,
+body.tema-claro nav a,
+body.tema-claro footer p { color: #201526; }
+
+.botao-tema-formulario {
+    padding: .55rem .8rem;
+    color: #fff;
+    background: #392448;
+    border: .0625rem solid #62466e;
+    border-radius: .35rem;
+    font: bold .7rem "Courier New", monospace;
+    cursor: pointer;
+}
+
+.botao-tema-formulario:hover,
+.botao-tema-formulario:focus-visible { background: #563663; }
+
+body.tema-claro .botao-tema-formulario {
+    color: #fff;
+    background: #392448;
+    border-color: #62466e;
+}
+
+body.tema-claro .titulo-secao h1,
+body.tema-claro .eyebrow,
+body.tema-claro .campo label,
+body.tema-claro footer p:first-child { color: #563663; }
+body.tema-claro .eyebrow { color: #392448; }
+
+body.tema-claro .formulario-introducao { border-color: rgba(86,54,99,.4); }
+body.tema-claro header.formulario-introducao {
+    min-height: 0;
+    padding: 1.25rem;
+    background: rgba(165,142,175,.78);
+    border: .0625rem solid rgba(86,54,99,.4);
+    border-radius: .5rem;
+    box-shadow: none;
+}
+body.tema-claro .formulario-introducao h2,
+body.tema-claro .formulario-introducao h3,
+body.tema-claro .formulario-introducao p:not(.eyebrow) { color: #120c15; text-shadow: none; }
+
+body.tema-claro .campo input,
+body.tema-claro .campo select,
+body.tema-claro .campo textarea {
+    color: #201526;
+    background: rgba(205,190,212,.82);
+    border-color: #795f87;
+}
+
+body.tema-claro .campo input::placeholder,
+body.tema-claro .campo textarea::placeholder { color: #201624; }
+body.tema-claro .campo input:focus,
+body.tema-claro .campo select:focus,
+body.tema-claro .campo textarea:focus { background: #d8c9de; border-color: #563663; }
+
+body.tema-claro .botao-formulario,
+body.tema-claro .botao-voltar {
+    color: #fff;
+    background: #392448;
+    border-color: #62466e;
+}
+
+body.tema-claro .botao-formulario:hover,
+body.tema-claro .botao-voltar:hover {
+    color: #fff; 
+    background: #563663; 
+    border-color: #392448;
+    box-shadow: 0 .3rem 1rem rgba(35,17,48,.3);
+    transform: translateY(-.1rem);
+}
+
+body.tema-claro footer.botoes-formulario {
+    padding: 0;
+    text-align: left;
+    background: transparent;
+    border: 0;
+}
+body.tema-claro > footer { 
+    background: rgba(165,142,175,.78); 
+    border-color: #62466e; }
+body.tema-claro footer p { color: #382544; }
+body.tema-claro .mensagem-feedback { color: #382544; }
+body.tema-claro .mensagem-feedback.sucesso { color: #235c32; }
+
+
+/* Ajustes para telas pequenas. */
+
+@media (max-width: 43.75rem) {
+
+    header {
+
+        padding: 1.125rem 5%;
+
+        flex-direction: column;
+
+        align-items: center;
+
+    }
+
+
+    nav {
+
+        justify-content: center;
+
+        gap: 0.625rem 1rem;
+
+    }
+
+
+    nav a {
+
+        font-size: 0.5625rem;
+
+    }
+
+
+    .pagina-formulario {
+
+        width: 90%;
+
+        margin: 3.4375rem auto;
+
+    }
+
+
+    .titulo-secao {
+
+        gap: 0.625rem;
+
+    }
+
+
+    .titulo-secao h1 {
+
+        font-size: 0.8125rem;
+
+        text-align: center;
+
+    }
+
+
+    .formulario-container {
+
+        padding: 1.875rem 1.25rem;
+
+    }
+
+
+    .formulario-introducao h2 {
+
+        font-size: 1.3125rem;
+
+    }
+
+
+    .formulario-introducao p:not(.eyebrow) {
+
+        font-size: 0.875rem;
+
+    }
+
+
+    .botoes-formulario {
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+    }
+
+
+    .botao-formulario,
+    .botao-voltar {
+
+        width: 100%;
+
+    }
+
+}
+
+
+/* Celulares estreitos. */
+
+@media (max-width: 26.25rem) {
+
+    .titulo {
+
+        font-size: 1.25rem;
+
+    }
+
+
+    nav {
+
+        gap: 0.5rem 0.6875rem;
+
+    }
+
+
+    nav a {
+
+        font-size: 0.5rem;
+
+    }
+
+
+    .formulario-container {
+
+        padding: 1.5625rem 1rem;
+
+    }
+
+
+    .titulo-secao h1 {
+
+        font-size: 0.6875rem;
+
+    }
+
+}
